@@ -13,11 +13,13 @@ public class MyJframe {
                 JFrame frame = new JFrame("Circuit Play");
                 JPanel panel = new JPanel();
                 JLabel label = new JLabel("My dream project");
-                ImageIcon imgicon = new ImageIcon("Mypackage/logoZommer.png");
-                panel.add(label);
-                frame.add(panel);
+                ImageIcon imgicon = new ImageIcon("Mypackage/contant/logoZommer.png");
+                ImageIcon bg = new ImageIcon("Mypackage/contant/bgimage.jpg");
+
                 frame.setIconImage(imgicon.getImage());
-                frame.setSize(200, 300);
+                frame.setSize(1920, 1080);
+                frame.add(new JLabel(bg));
+
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
