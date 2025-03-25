@@ -13,11 +13,10 @@ public class MyJframe {
                 JFrame frame = new JFrame("Circuit Play");
                 JPanel panel = new JPanel();
                 JLabel label = new JLabel("My dream project");
-                ImageIcon img = new ImageIcon();
+                ImageIcon imgicon = new ImageIcon("Mypackage/logoZommer.png");
                 panel.add(label);
                 frame.add(panel);
-                frame.setIconImage(img.getImage());
-
+                frame.setIconImage(imgicon.getImage());
                 frame.setSize(200, 300);
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
