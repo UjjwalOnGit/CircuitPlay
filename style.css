@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
 
 body {
-    /* background-image: url("./content/BgImage.png"); */
+    background-image: url("./content/BgImage.png");
 }
 
 h1 {
 
 
-    /* font-family: "Codystar", sans-serif; 
-    font-weight: 400;
+    font-family: "Codystar", sans-serif; 
+    font-weight: 4000;
     font-style: normal;
-    text-align: center; */
+    text-align: center;
 }
