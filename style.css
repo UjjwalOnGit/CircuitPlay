@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
+
 
 body {
     background-image: url("./content/BgImage.png");
+    user-select: none;
 }
 
 h1 {
@@ -11,4 +14,34 @@ h1 {
     font-weight: 4000;
     font-style: normal;
     text-align: center;
+}
+
+.object{
+    top: 50%;
+    left: 50%;
+    width: 6%;
+    /* height: 10%; */
+    background-color:#ECF0F1;
+    border-radius: 12px;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(1.5);
+
+}
+
+.object header{
+    padding: 7px;
+    padding-bottom: 4px;
+    font-family: "Wallpoet", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    border-bottom: 1px solid #bfbfbf;
+    text-align: center;
+    cursor: move;
+}
+.svg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4%;
+    padding-left: 3%;
 }
