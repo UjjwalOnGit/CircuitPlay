@@ -15,9 +15,24 @@ function onDrag({movementX , movementY}){
 
 
 header.addEventListener("mousedown", ()=>{
-    header.addEventListener("mousemove", onDrag);
+    document.addEventListener("mousemove", onDrag);
 });
 
 document.addEventListener("mouseup", ()=>{
-    header.removeEventListener("mousemove", onDrag);
+    document.removeEventListener("mousemove", onDrag);
+});
+
+
+
+
+window.addEventListener("contextmenu", function(event){
+    event.preventDefault();
+    var contextElement = document.getElementById("RightClickMenu");
+    contextElement.style.top = event.offsetY + "px";
+    contextElement.style.left = event.offsetX + "px";
+    contextElement.classList.add("active");
+});
+
+window.addEventListener("click", function(){
+    document.getElementById("RightClickMenu").classList.remove("active");
 });
