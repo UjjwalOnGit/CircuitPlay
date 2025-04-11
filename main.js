@@ -1,5 +1,4 @@
-// ========== RIGHT-CLICK MENU POSITION ==========-----------------------------
-
+// ========== RIGHT-CLICK MENU ==========
 let contextPos = { x: 0, y: 0 };
 
 window.addEventListener("contextmenu", function (event) {
@@ -16,25 +15,21 @@ window.addEventListener("click", function () {
     document.getElementById("RightClickMenu").classList.remove("active");
 });
 
-
-// ------------------------------------------------------------------------------
-
-// ========== HANDLE MENU ITEM CLICK ==========----------------------
-
+// ========== MENU ITEM CLICK ==========
 const menuItems = document.querySelectorAll("#RightClickMenu .item");
 
 menuItems.forEach(item => {
     item.addEventListener("click", () => {
         const type = item.textContent.trim();
-        createGate(type, contextPos.x, contextPos.y);
+        if (type === "SWITCH") {
+            createSwitch(contextPos.x, contextPos.y);
+        } else {
+            createGate(type, contextPos.x, contextPos.y);
+        }
     });
 });
 
-//--------------------------------------------------------------------
-
-
-// ========== GATE CREATION ==========-------------------------------
-
+// ========== GATE CREATION ==========
 function createGate(type, x, y) {
     const template = document.querySelector("#gateTemplate .object");
     const newGate = template.cloneNode(true);
@@ -47,15 +42,31 @@ function createGate(type, x, y) {
     newGate.querySelector("header").textContent = type;
 
     document.body.appendChild(newGate);
-
     makeDraggable(newGate);
 }
 
-//------------------------------------------------------------------
+// ========== SWITCH CREATION ==========
+function createSwitch(x, y) {
+    const template = document.querySelector("#switch-template").content.querySelector(".object");
+    const newSwitch = template.cloneNode(true);
 
+    newSwitch.style.left = x + "px";
+    newSwitch.style.top = y + "px";
+    newSwitch.style.position = "absolute";
+    newSwitch.style.display = "block";
 
-// ========== MAKE GATE DRAGGABLE ==========------------
+    const checkbox = newSwitch.querySelector("input[type='checkbox']");
+    checkbox.addEventListener("change", () => {
+        const isOn = checkbox.checked;
+        newSwitch.dataset.value = isOn ? "true" : "false";
+        console.log("Switch state:", isOn);
+    });
 
+    document.body.appendChild(newSwitch);
+    makeDraggable(newSwitch);
+}
+
+// ========== MAKE ANY ELEMENT DRAGGABLE ==========
 function makeDraggable(wrapper) {
     const header = wrapper.querySelector("header");
 
@@ -76,8 +87,3 @@ function makeDraggable(wrapper) {
         document.removeEventListener("mousemove", onDrag);
     });
 }
-//--------------------------------------------------------
-
-// ========== MAKE INITIAL GATE DRAGGABLE ==========
-
-makeDraggable(document.querySelector(".object"));

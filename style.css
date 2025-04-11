@@ -1,97 +1,187 @@
 @import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@700&display=swap');
-
 
 body {
-    background-image: url("./content/BgImage.png");
-    user-select: none;
-      
+    width: 100%;
+    height: 100%;
+    --color: #adadad;
+    background-color: #BEBEC0;
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+    background-size: 55px 55px;
+    margin: 0;
+
 }
 
 h1 {
     font-family: "Codystar", sans-serif;
     text-align: center;
+    text-shadow: 6px 5px 8px rgb(0, 0, 0);
     font-size: 70px;
+    font-weight: 900;
+    margin-top: 10px;
 }
 
-.object{
+.object {
     top: 50%;
     left: 50%;
-    width: 6%;
-    background-color:#ECF0F1;
-    border-radius: 2px;
+    width: 100px;
+    background-color: #ECF0F1;
+    border-radius: 4px;
+    border: 3px solid #bfbfbf;
     position: absolute;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.object header{
+.object header {
     padding: 10px;
     font-family: "Wallpoet", sans-serif;
     border-bottom: 1px solid #bfbfbf;
     text-align: center;
     cursor: grab;
     font-size: 20px;
-}
-.svg{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 4%;
-    padding-left: 3%;
+    background: #ddd;
 }
 
-.plug{
+/* Plug for gates */
+.plug {
     position: absolute;
     border: 2px solid #fff;
-    box-shadow: 0 0 2px rgba(0,0,0,0.3);
-    right: -6px;    
-    top: 50%;         
-    transform: translateY(-50%);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
     background-color: red;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.2s ease; 
-
+    transition: all 0.2s ease;
 }
+
+.plug.output {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.plug.input {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .plug:hover {
     transform: translateY(-50%) scale(1.4);
     background-color: #3498db;
-  }
+}
 
-#RightClickMenu{
+/* Right-click menu */
+#RightClickMenu {
     font-family: "Inria Sans", sans-serif;
     position: fixed;
-    width: 90px;
+    width: 100px;
     background: #1b1a1a;
     transform: scale(0);
     transform-origin: top left;
+    z-index: 999;
+    border: 1px solid #444;
 }
 
-#RightClickMenu.active{
+#RightClickMenu.active {
     transform: scale(1);
     transition: transform 200ms ease-in-out;
 }
 
-#RightClickMenu .item{
-    padding: 8px , 10px;
+#RightClickMenu .item {
+    padding: 10px;
     font-size: 15px;
     color: #ffffff;
+    cursor: pointer;
 }
 
-#RightClickMenu .item:hover{
+#RightClickMenu .item:hover {
     background: #555;
 }
 
-#RightClickMenu .item i{
+/* ============ SWITCH STYLES ============ */
+
+.switch {
+    font-size: 17px;
+    position: relative;
     display: inline-block;
-    margin-right: 5px;
+    width: 1.2em;
+    height: 3.3em;
+    margin: 10px;
+
 }
 
-#RightClickMenu hr{
-    margin: 2px 0;
-    border-color: #555;
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 5px;
+}
+.SwichContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(0%);
+
+}
+
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: .5em;
+    width: 2.4em;
+    border-radius: 5px;
+    left: -0.6em;
+    top: 0.2em;
+    background-color: white;
+    box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3);
+    transition: .4s;
+}
+
+.slider:after {
+    background: linear-gradient(transparent 50%, rgba(255, 255, 255, 0.15) 0) 0 50% / 50% 100%,
+        repeating-linear-gradient(90deg, rgb(255, 255, 255) 0, rgb(255, 255, 255), rgb(255, 255, 255) 20%, rgb(255, 255, 255) 20%, rgb(255, 255, 255) 40%) 0 50% / 50% 100%,
+        radial-gradient(circle at 50% 50%, rgb(255, 255, 255) 25%, transparent 26%);
+    background-repeat: no-repeat;
+    border: 0.25em solid transparent;
+    border-left: 0.4em solid #ffffff;
+    transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
+    transform: translateX(-22.5%) rotate(90deg);
+    transform-origin: 25% 50%;
+    position: relative;
+    top: 0.5em;
+    left: 0.55em;
+    width: 2em;
+    height: 1em;
+    box-sizing: border-box;
+    content: "";
+    display: block;
+}
+
+input:checked + .slider {
+    background-color: limegreen;
+}
+
+input:checked + .slider:before {
+    transform: translateY(2.3em);
+}
+
+input:checked + .slider:after {
+    transform: rotateZ(90deg) rotateY(180deg) translateY(0.45em) translateX(-1.4em);
 }

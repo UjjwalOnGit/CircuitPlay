@@ -2,43 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>CIRCUIT PLAY</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>CIRCUIT PLAY</title>
 </head>
 
 <body>
-    <h1>Circuit play</h1>
+  <h1>Circuit Play</h1>
 
+  <!-- Right-click menu -->
+  <div id="RightClickMenu">
+    <div class="item">SWITCH</div>
+    <div class="item">AND</div>
+    <div class="item">OR</div>
+    <div class="item">NOT</div>
+  </div>
+
+  <!-- Hidden Gate Template -->
+  <div id="gateTemplate" style="display: none;">
     <div class="object">
-        <header>AND</header>
-        <div class="plug"></div>
+      <header></header>
+      <div class="plug output"></div>
+      <div class="plug input" style="top: 10px; left: -6px;"></div>
+      <div class="plug input" style="top: 30px; left: -6px;"></div>
     </div>
+  </div>
 
-    <div id="gateTemplate" style="display: none;">
-        <div class="object">
-            <header>AND</header>
+  <!-- Switch Template -->
+  <template id="switch-template">
+    <div class="object switch-object">
+      <header>BTN</header>
+      <div class="SwichContainer">
+          <label class="switch">
+              <input type="checkbox" />
+              <span class="slider"></span>
+            </label>
             <div class="plug output"></div>
-            <div class="plug input" style="top: 10px; left: -6px;"></div>
-            <div class="plug input" style="top: 30px; left: -6px;"></div>
         </div>
     </div>
+  </template>
 
-
-
-    <div id="RightClickMenu">
-        <div class="item">
-            <i class="fa-solid fa-plus"></i>AND</div>
-            
-        <div class="item">
-            <i class="fa-solid fa-plus"></i>OR</div>
-
-        <div class="item">
-            <i class="fa-solid fa-plus"></i>NOT</div>
-    </div>
-
-    <script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>
